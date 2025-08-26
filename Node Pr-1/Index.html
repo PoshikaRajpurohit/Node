@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f172a;
+      color: white;
+      line-height: 1.6;
+    }
+
+    .main-header {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 246, 255, 0.3);
+
+}
+
+
+    .nav-links a {
+      position: relative;
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #00f6ff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00f6ff;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .quote-btn {
+      background: linear-gradient(135deg, #00f6ff, #0ef);
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .quote-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0ef, #00f6ff);
+      box-shadow: 0 0 25px rgba(0, 246, 255, 0.7);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 80px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: #00f6ff;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #cbd5e1;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .hero .btn {
+      background: #0ef;
+      color: black;
+      font-weight: bold;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hero .btn:hover {
+      background: #00f6ff;
+      box-shadow: 0 0 20px rgba(0, 246, 255, 0.5);
+    }
+
+    /* Features */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 10px auto;
+      max-width: 1000px;
+      padding: 0 20px;
+    }
+
+    .feature-card {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 30px;
+      width: 300px;
+      margin: 15px;
+      text-align: center;
+      transition: 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 246, 255, 0.05);
+    }
+
+    .feature-card:hover {
+      background: #0f172a;
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 246, 255, 0.2);
+    }
+
+    .feature-card h3 {
+      color: #0ef;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: #cbd5e1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #94a3b8;
+      margin-top: 60px;
+      border-top: 1px solid #334155;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <div >
+        <img src="https://res.cloudinary.com/dx457iqpi/image/upload/v1752553072/initial-letter-pr-logotype-company-name-blue-circle-swoosh-design-vector-logo-business-identity-203854503-removebg-preview_ygqobo.png" alt="logo" width="100px" height="auto"class="logo-img" >
+      </div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/service">Services</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <button class="quote-btn">Get a Quote</button>
+    </div>
+  </header>
+  <section class="hero">
+    <h1>Crafting Web Experiences that Matter</h1>
+    <p>I help businesses and individuals bring their ideas to life through beautiful and functional web solutions. From frontend to backend — I cover it all.</p>
+    <button class="btn">Explore My Work</button>
+  </section>
+  <section class="features">
+    <div class="feature-card">
+      <h3>Frontend Development</h3>
+      <p>Modern, fast, and responsive UI built using React, HTML5, CSS3, and JavaScript.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Backend Solutions</h3>
+      <p>Powerful APIs, databases, and server logic using Node.js, Express, and MongoDB.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Full Stack Projects</h3>
+      <p>From concept to deployment, I build complete web apps tailored to your needs.</p>
+    </div>
+  </section>
+  <footer>
+    &copy; 2025 Poshika Rajpurohit. All rights reserved.
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Store</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f7fafc;
+      color: #1a202c;
+    }
+
+    .main-header {
+      background: linear-gradient(to right, #2c5282, #2a4365);
+      padding: 20px 0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .main-header .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #e2e8f0;
+      font-weight: 600;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .book-list {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2a4365;
+      font-size: 2rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Filter */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  background-color: #edf2f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.filter-bar label {
+  font-weight: 600;
+  color: #2a4365;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.filter-bar select {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2d3748;
+  background-color: #fff;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-bar select:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.3);
+  outline: none;
+}
+
+/*  Responsive Filter  */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-bar label {
+    margin-top: 8px;
+  }
+}
+
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .book-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      width: 300px;
+      height: auto;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-6px);
+    }
+
+.book-image {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+
+
+    .book-content {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book-title {
+      font-weight: 600;
+      color: #2d3748;
+      font-size:20px;
+      margin-bottom: 5px;
+    }
+
+    .book-meta {
+      font-size: 15px;
+      color: #4a5568;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .book-meta span {
+      display: block;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .actions a {
+      flex: 1;
+      text-align: center;
+    }
+
+    .actions button {
+      width: 100%;
+      padding: 8px 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+    }
+
+    .edit-btn {
+      background-color: #38a169;
+    }
+
+    .edit-btn:hover {
+      background-color: #2f855a;
+    }
+
+    .delete-btn {
+      background-color: #e53e3e;
+    }
+
+    .delete-btn:hover {
+      background-color: #c53030;
+    }
+.no-books {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.no-books-text {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.add-btn {
+  padding: 10px 20px;
+  background: linear-gradient(to right, #3182ce, #2b6cb0);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(50, 115, 220, 0.2);
+}
+
+.add-btn:hover {
+  background: linear-gradient(to right, #2b6cb0, #2c5282);
+  transform: translateY(-2px);
+}
+
+
+
+    @media (max-width: 768px) {
+      .main-header .container {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .book-card {
+        width: 100%;
+      }
+
+      .book-image {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="container">
+      <a href="/" class="logo">📖 Book Store</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/add">Add Book</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <section class="book-list">
+    <h2>Explore Our Book Collection</h2>
+
+    <!-- FILTER -->
+    <div class="filter-bar">
+      <form method="GET" action="/">
+        <label for="language">Language:</label>
+        <select name="language" id="language" onchange="this.form.submit()">
+          <option value="">All</option>
+          <option value="English" <%= language === 'English' ? 'selected' : '' %>>English</option>
+          <option value="Hindi" <%= language === 'Hindi' ? 'selected' : '' %>>Hindi</option>
+          <option value="French" <%= language === 'French' ? 'selected' : '' %>>French</option>
+        </select>
+        <label for="edition"> Edition:</label>
+        <select name="edition" id="edition" onchange="this.form.submit()">
+          <option value="">All</option>
+          <option value="1" <%= edition === '1' ? 'selected' : '' %>>1</option>
+          <option value="2" <%= edition === '2' ? 'selected' : '' %>>2</option>
+          <option value="3" <%= edition === '3' ? 'selected' : '' %>>3</option>
+          <option value="4" <%= edition === '4' ? 'selected' : '' %>>4</option>
+          <option value="5" <%= edition === '5' ? 'selected' : '' %>>5</option>
+        </select>
+        <label for="genre"> Genre:</label>
+        <select name="genre" id="genre" onchange="this.form.submit()">
+           <option value="">All</option>
+      <option value="Biography" <%= genre === 'Biography' ? 'selected' : '' %>>Biography</option>
+  <option value="Autobiography" <%= genre === 'Autobiography' ? 'selected' : '' %>>Autobiography</option>
+  <option value="Historical" <%= genre === 'Historical' ? 'selected' : '' %>>Historical</option>
+  <option value="Horror" <%= genre === 'Horror' ? 'selected' : '' %>>Horror</option>
+  <option value="Adventure" <%= genre === 'Adventure' ? 'selected' : '' %>>Adventure</option>
+  <option value="Economy" <%= genre === 'Economy' ? 'selected' : '' %>>Economy</option>
+  <option value="Poetry" <%= genre === 'Poetry' ? 'selected' : '' %>>Poetry</option>
+  <option value="Children" <%= genre === 'Children' ? 'selected' : '' %>>Children</option>
+  <option value="Drama" <%= genre === 'Drama' ? 'selected' : '' %>>Drama</option>
+  <option value="Comedy" <%= genre === 'Comedy' ? 'selected' : '' %>>Comedy</option>
+  <option value="Spiritual" <%= genre === 'Spiritual' ? 'selected' : '' %>>Spiritual</option>
+  <option value="Educational" <%= genre === 'Educational' ? 'selected' : '' %>>Educational</option>
+        </select>
+      </form>
+    </div>
+
+    <!-- BOOK LIST -->
+      <div class="card-container">
+  <% if (notFound) { %>
+    <div class="no-books">
+  <p class="no-books-text">📚 No books found</p>
+  <a href="/add"><button class="add-btn"> Add a Book</button></a>
+</div>
+
+  <% } else { %>
+    <% books.forEach((book) => { %>
+      <div class="book-card" align="center">
+       <a href="/view-book/<%= book._id %>">
+  <img src="<%= book.image %>" alt="Book Cover" class="book-image">
+</a>
+
+        <div class="book-content">
+          <div class="book-title"><%= book.title %></div>
+          <div class="book-meta">
+            <span><strong>Author:</strong> <%= book.author %></span>
+             <span><strong>Lang:</strong> <%= book.language %></span>
+            <span><strong>Genre:</strong> <%= book.genre %></span>           
+            <span><strong>Publish year: </strong>  <%= book.publishedYear %> </span>
+          </div>
+          <div class="actions">
+            <a href="/edit-book/<%= book._id %>">
+              <button class="edit-btn">Edit</button>
+            </a>
+            <a href="/delete-book/<%= book._id %>">
+              <button class="delete-btn">Delete</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  <% } %>
+</div>
+  </section>
+</body>
+</html>
+
+
+

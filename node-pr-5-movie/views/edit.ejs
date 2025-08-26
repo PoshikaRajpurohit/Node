@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Movie</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0b0f19;
+      color: #fff;
+      margin: 0;
+    }
+
+   
+    .main-header {
+      background: #0b0f19;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    .main-header .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      height: 45px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    h2.text-center {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      margin: 30px 0 20px;
+      color: #fff;
+    }
+
+  
+    .card {
+      background: #131722;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 60px;
+      padding: 25px;
+    }
+
+    .image-preview {
+      display: block;
+      max-width: 220px;
+      height: auto;
+      margin: 0 auto 20px;
+      border-radius: 8px;
+      border: 2px solid #333;
+      padding: 5px;
+      background: #0b0f19;
+    }
+
+   
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      font-weight: 500;
+      margin-bottom: 6px;
+      display: block;
+      color: #ddd;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background: #0b0f19;
+      color: #fff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .form-group input:focus {
+      border-color: #28a745;
+      box-shadow: 0 0 5px rgba(40,167,69,0.5);
+      outline: none;
+    }
+
+  
+    .btn-update {
+      width: 100%;
+      padding: 12px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .btn-update:hover {
+      background: #218838;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <a href="/" class="logo">
+        <img src="https://cdn.pixabay.com/photo/2022/07/17/19/22/movie-7328179_1280.png" alt="logo">
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/add">Add Movie</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2 class="text-center">🎬 Edit Movie</h2>
+
+    <div class="card">
+      <form action="/update-movie/<%= movie.id %>" method="post" enctype="multipart/form-data">
+        
+        <% if (movie.image) { %>
+          <img src="<%= movie.image %>" class="image-preview" alt="<%= movie.title %>">
+        <% } else { %>
+          <img src="https://via.placeholder.com/200x300" class="image-preview" alt="No image">
+        <% } %>
+
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" name="title" value="<%= movie.title %>" required />
+        </div>
+
+        <div class="form-group">
+          <label>Director</label>
+          <input type="text" name="director" value="<%= movie.director %>" required />
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" name="description" value="<%= movie.description %>" required />
+        </div>
+
+        <div class="form-group">
+          <label>Genre</label>
+          <input type="text" name="genre" value="<%= movie.genre %>" required />
+        </div>
+
+        <div class="form-group">
+          <label>Year</label>
+          <input type="number" name="year" value="<%= movie.year %>" required />
+        </div>
+
+        <div class="form-group">
+          <label>Cast</label>
+          <input type="text" name="cast" value="<%= movie.cast %>" required />
+        </div>
+
+        <div class="form-group">
+          <label>Upload New Image</label>
+          <input type="file" name="image" />
+        </div>
+
+        <button type="submit" class="btn-update">Update Movie</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

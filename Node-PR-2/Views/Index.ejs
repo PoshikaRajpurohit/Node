@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task List</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7fafc;
+      color: #2d3748;
+    }
+
+    
+    /* Header */
+    .main-header {
+      background-color: #2a4365;
+      color: white;
+      padding: 15px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .main-header .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      margin: 0 10px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #1a365d;
+    }
+
+    .task-list {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2a4365;
+      font-size: 2.2rem;
+    }
+    /* Table */
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #2a4365;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    td {
+      background-color: #edf2f7;
+    }
+
+    tbody tr:nth-child(even) td {
+      background-color: #e2e8f0;
+    }
+
+    tbody tr:hover td {
+      background-color: #cbd5e0;
+      transition: 0.3s;
+    }
+
+    button {
+      padding: 6px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+    }
+
+    .edit-btn {
+      background-color: #38a169;
+      margin-right: 5px;
+    }
+
+    .edit-btn:hover {
+      background-color: #2f855a;
+    }
+
+    .delete-btn {
+      background-color: #e53e3e;
+    }
+
+    .delete-btn:hover {
+      background-color: #c53030;
+    }
+
+    @media (max-width: 768px) {
+      .main-header .container {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .task-list {
+        padding: 20px 10px;
+      }
+
+      table, th, td {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="nav-links">
+        <a href="/">Home</a>
+      </div>
+      <div class="nav-links">
+        <a href="/add">Add Task</a>
+      </div>
+    </div>
+  </header>
+  <section class="task-list">
+    <h1>My Task List</h1>
+    <table border="2">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Time</th>
+          <th>Task</th>
+          <th>Category</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% tasks.forEach((task, index) => { %>
+          <tr>
+            <td><%= task.id %></td>
+            <td><%= task.time %></td>
+            <td><%= task.task %></td>
+            <td><%= task.category %></td>
+            <td><%= task.priority %></td>
+            <td><%= task.status %></td>
+            <td><a href="/edit-task/<%= task.id %>"><button class="edit-btn">Edit</button></a></td>
+            <td><a href="/delete-task/<%= task.id %>"><button class="delete-btn">Delete</button></a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </section>
+</body>
+</html>
+
+
+

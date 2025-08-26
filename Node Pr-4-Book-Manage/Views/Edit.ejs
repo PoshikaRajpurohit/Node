@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e9f0ff, #f9f9f9);
+      color: #333;
+    }
+.main-header {
+      background: linear-gradient(to right, #2c5282, #2a4365);
+      padding: 20px 0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .main-header .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #e2e8f0;
+      font-weight: 600;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+
+    .book-container {
+      display: flex;
+      justify-content: center;
+      padding: 50px 20px;
+    }
+
+    .book-content {
+      background: #fff;
+      padding: 40px 35px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #1f3b88;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #1f3b88;
+      box-shadow: 0 0 0 2px rgba(31, 59, 136, 0.2);
+      outline: none;
+    }
+
+    button[type="submit"] {
+      background: #1f3b88;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background: #152c63;
+    }
+  </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="container">
+      <a href="/" class="logo">📖 Book Store</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/add">Add Book</a>
+      </div>
+    </div>
+  </header>
+
+<section class="book-container">
+  <div class="book-content">
+    <h1>Edit Book</h1>
+    <form action="/edit/<%= book.id %>" method="post">
+      <div class="form-group">
+        <label>Image URL</label>
+        <input type="url" name="image" value="<%= book.image %>" required>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" name="description" value="<%= book.description %>" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" name="title" value="<%= book.title %>" required>
+        </div>
+        <div class="form-group">
+          <label>Author</label>
+          <input type="text" name="author" value="<%= book.author %>" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Country</label>
+          <input type="text" name="country" value="<%= book.country %>" required>
+        </div>
+        <div class="form-group">
+          <label>Language</label>
+          <select name="language" required>
+            <option value="">-- Select Language --</option>
+            <option value="Hindi" <%= book.language === 'Hindi' ? 'selected' : '' %>>Hindi</option>
+            <option value="English" <%= book.language === 'English' ? 'selected' : '' %>>English</option>
+            <option value="French" <%= book.language === 'French' ? 'selected' : '' %>>French</option>
+            <option value="Spanish" <%= book.language === 'Spanish' ? 'selected' : '' %>>Spanish</option>
+          </select>
+        </div>
+      </div>
+       <div class="form-group">
+        <label for="genre">Genre</label>
+        <select name="genre" id="genre" required>
+        <option value="">Select Genre</option>
+      <option value="Biography" <%= book.genre === 'Biography' ? 'selected' : '' %>>Biography</option>
+  <option value="Autobiography" <%= book.genre === 'Autobiography' ? 'selected' : '' %>>Autobiography</option>
+  <option value="Historical" <%= book.genre === 'Historical' ? 'selected' : '' %>>Historical</option>
+  <option value="Horror" <%= book.genre === 'Horror' ? 'selected' : '' %>>Horror</option>
+  <option value="Adventure" <%= book.genre === 'Adventure' ? 'selected' : '' %>>Adventure</option>
+  <option value="Economy" <%= book.genre === 'Economy' ? 'selected' : '' %>>Economy</option>
+  <option value="Poetry" <%= book.genre === 'Poetry' ? 'selected' : '' %>>Poetry</option>
+  <option value="Children" <%= book.genre === 'Children' ? 'selected' : '' %>>Children</option>
+  <option value="Drama" <%= book.genre === 'Drama' ? 'selected' : '' %>>Drama</option>
+  <option value="Comedy" <%= book.genre === 'Comedy' ? 'selected' : '' %>>Comedy</option>
+  <option value="Spiritual" <%= book.genre === 'Spiritual' ? 'selected' : '' %>>Spiritual</option>
+  <option value="Educational" <%= book.genre === 'Educational' ? 'selected' : '' %>>Educational</option>
+</select>
+
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Edition</label>
+          <input type="text" name="edition" value="<%= book.edition %>" required>
+        </div>
+        <div class="form-group">
+          <label>Pages</label>
+          <input type="text" name="pages" value="<%= book.pages %>" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Price</label>
+          <input type="number" name="price" value="<%= book.price %>" required>
+        </div>
+        <div class="form-group">
+          <label>Published Year</label>
+          <input type="number" name="publishedYear" value="<%= book.publishedYear %>" required>
+        </div>
+      </div>
+
+      <button type="submit">Update Book</button>
+    </form>
+  </div>
+</section>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Movie</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0b0f19;
+      color: #fff;
+    }
+
+    .main-header {
+      background: #0b0f19;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    .main-header .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      height: 45px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    
+    .form-container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 25px;
+      background: #131722;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 26px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+   
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #ddd;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background: #0b0f19;
+      color: #fff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .form-group input:focus {
+      border-color: #28a745;
+      box-shadow: 0 0 5px rgba(40,167,69,0.5);
+      outline: none;
+    }
+
+ 
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .submit-btn:hover {
+      background: #218838;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <a href="/" class="logo">
+        <img src="https://cdn.pixabay.com/photo/2022/07/17/19/22/movie-7328179_1280.png" alt="logo">
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/add">Add Movie</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="form-container">
+    <h2>Add Movie</h2>
+    <form action="/add-movie" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="title">Movie Title:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="director">Director:</label>
+        <input type="text" id="director" name="director" required>
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <input type="text" name="description" required>
+      </div>
+      <div class="form-group">
+        <label>Genre:</label>
+        <input type="text" name="genre" required>
+      </div>
+      <div class="form-group">
+        <label for="year">Release Year:</label>
+        <input type="number" id="year" name="year" required>
+      </div>
+      <div class="form-group">
+        <label>Cast:</label>
+        <input type="text" name="cast" required>
+      </div>
+      <div class="form-group">
+        <label>Image:</label>
+        <input type="file" name="image" required>
+      </div>
+      <button type="submit" class="submit-btn">Add Movie</button>
+    </form>
+  </div>
+
+</body>
+</html>

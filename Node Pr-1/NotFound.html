@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Not Found</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .not-found-container {
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 120px;
+      color: #00f6ff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(0, 246, 255, 0.4);
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+
+    .btn-home {
+      background: linear-gradient(135deg, #00f6ff, #0ef);
+      color: #000;
+      border: none;
+      padding: 12px 24px;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 0 15px rgba(0, 246, 255, 0.3);
+      transition: all 0.3s ease-in-out;
+      text-decoration: none;
+    }
+
+    .btn-home:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0ef, #00f6ff);
+      box-shadow: 0 0 25px rgba(0, 246, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="not-found-container">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    <p>Sorry, the page you're looking for doesn't exist or has been moved.</p>
+    <a href="/" class="btn-home">Go to Homepage</a>
+  </div>
+
+</body>
+</html>

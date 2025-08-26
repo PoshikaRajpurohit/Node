@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= movie.title %> | Movie Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0d1117; 
+  color: #fff;
+}
+
+/* HEADER */
+.main-header {
+  background-color: #161b22; /* Dark header */
+  padding: 15px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.main-header .container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 45px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 20px;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00ff99; /* Green hover to match index buttons */
+}
+
+/* BACK BUTTON */
+.back-btn {
+  display: inline-block;
+  margin: 25px 0 20px 20px;
+  padding: 8px 16px;
+  background-color: #ffcc70;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #ffcc70;
+}
+
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.view-wrapper {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  background-color: #161b22;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.movie {
+  flex: 1;
+  min-width: 280px;
+  max-width: 380px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+
+.details h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  margin-bottom: 15px;
+  color: #ffcc70; 
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #ffcc70;
+  padding-right: 5px;
+}
+
+.detail-value {
+  color: #e0e0e0;
+}
+
+.description {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #b0b8c1; 
+  line-height: 1.7;
+}
+
+
+
+@media (max-width: 768px) {
+  .view-wrapper {
+    flex-direction: column;
+  }
+
+  .movie {
+    max-width: 100%;
+    margin: auto;
+  }
+}
+
+  </style>
+</head>
+<body>
+ <header class="main-header">
+    <div class="container">
+      <a href="/" class="logo"><img src="https://cdn.pixabay.com/photo/2022/07/17/19/22/movie-7328179_1280.png" alt="logo" height="50px"></a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/add">Add Movie</a>
+      </div>
+    </div>
+  </header>
+ 
+  <a href="/" class="back-btn">&larr; Back to Home</a>
+
+  <div class="container">
+    <div class="view-wrapper">
+      <img src="<%= movie.image %>" alt="Movie Cover" class="movie"/>
+
+      <div class="details">
+        <h2><%= movie.title %></h2>
+
+        <div class="detail-row"><span class="detail-label">Director:</span> <span class="detail-value"><%= movie.director %></span></div>  
+        <div class="detail-row"><span class="detail-label">Genre:</span> <span class="detail-value"><%= movie.genre %></span></div>
+        <div class="detail-row"><span class="detail-label">Cast:</span> <span class="detail-value"><%= movie.cast %></span></div>
+        <div class="detail-row"><span class="detail-label">Released Year:</span> <span class="detail-value"><%= movie.year %></span></div>
+
+        <div class="description">
+          <span class="detail-label">Description:</span>
+          <p><%= movie.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+

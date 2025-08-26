@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    /* Header */
+    .main-header {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #00f6ff;
+      text-shadow: 0 0 8px #00f6ff;
+    }
+
+    .nav-links a {
+      position: relative;
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #00f6ff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00f6ff;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    .logo-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 246, 255, 0.3);
+
+}
+    .quote-btn {
+      background: linear-gradient(135deg, #00f6ff, #0ef);
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .quote-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0ef, #00f6ff);
+      box-shadow: 0 0 25px rgba(0, 246, 255, 0.7);
+    }
+
+    /* About Section */
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 100px auto;      
+      padding: 0 30px;
+      align-items: center;
+      gap: 40px;
+    }
+    .about-content {
+      flex: 2;
+      min-width: 280px;
+    }
+
+    .about-content h1 {
+      font-size: 36px;
+      color: #00f6ff;
+      margin-bottom: 10px;
+    }
+
+    .about-content h3 {
+      color: #0ef;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #cbd5e1;
+      margin-bottom: 30px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .skill-tag {
+      background: #1e293b;
+      color: #0ef;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      box-shadow: 0 0 8px rgba(0, 246, 255, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: #0ef;
+      color: #000;
+      box-shadow: 0 0 12px rgba(0, 246, 255, 0.4);
+    }
+  .about-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 2px solid #00f6ff;
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-image img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(0, 246, 255, 0.5);
+}
+/* Footer */
+  footer {
+      text-align: center;
+      padding: 20px;
+      color: #94a3b8;
+      margin-top: 150px;
+      border-top: 1px solid #334155;
+    }
+
+
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 15px rgba(0, 246, 255, 0.3);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(0, 246, 255, 0.6);
+  }
+}
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-content {
+        padding-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+       <div >
+        <img src="https://res.cloudinary.com/dx457iqpi/image/upload/v1752553072/initial-letter-pr-logotype-company-name-blue-circle-swoosh-design-vector-logo-business-identity-203854503-removebg-preview_ygqobo.png" alt="logo" width="100px" height="auto"class="logo-img" >
+      </div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/service">Services</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <button class="quote-btn">Get a Quote</button>
+    </div>
+  </header>
+
+  <section class="about-container">
+    <div class="about-image">
+      <img src="https://res.cloudinary.com/dx457iqpi/image/upload/v1752555334/WhatsApp_Image_2025-07-15_at_10.19.43_wbgyra.jpg" alt="My Photo" />
+    </div>
+    <div class="about-content">
+      <h1>Poshika Rajpurohit</h1>
+      <h3>Full Stack Web Developer</h3>
+      <p>
+        I'm a dedicated Full Stack Developer with a strong foundation in both front-end and back-end technologies.
+        I specialize in creating responsive, user-friendly interfaces and robust backend systems.
+        From concept to deployment, I build complete web solutions that solve real-world problems.
+      </p>
+
+      <div class="skills">
+        <div class="skill-tag">React.js</div>
+        <div class="skill-tag">Node.js</div>
+        <div class="skill-tag">Express</div>
+        <div class="skill-tag">MongoDB</div>
+        <div class="skill-tag">Firebase</div>
+        <div class="skill-tag">HTML5/CSS3</div>
+        <div class="skill-tag">JavaScript</div>
+        <div class="skill-tag">REST APIs</div>
+        <div class="skill-tag">GitHub</div>
+        <div class="skill-tag">Deployment</div>
+      </div>
+    </div>
+  </section>
+    <footer>
+    &copy; 2025 Poshika Rajpurohit. All rights reserved.
+  </footer>
+</body>
+</html>
+
+

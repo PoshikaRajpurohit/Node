@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Not Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e9f0ff, #f9f9f9);
+      color: #333;
+    }
+
+    header {
+      background: rgba(31, 59, 136, 0.9);
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .container a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 17px;
+    }
+
+    .not-found-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+      padding: 40px 20px;
+    }
+
+    .not-found-box {
+      background: #fff;
+      padding: 60px 50px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .not-found-box h1 {
+      font-size: 60px;
+      color: #1f3b88;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+    }
+
+    .not-found-box p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .not-found-box a {
+      background: #1f3b88;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .not-found-box a:hover {
+      background: #152c63;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a href="/">Home</a>
+      <a href="/add">Add Task</a>
+    </div>
+  </header>
+
+  <div class="not-found-container">
+    <div class="not-found-box">
+      <h1>404</h1>
+      <p>Oops! The page you're looking for doesn't exist.</p>
+      <a href="/">Go Back Home</a>
+    </div>
+  </div>
+
+</body>
+</html>

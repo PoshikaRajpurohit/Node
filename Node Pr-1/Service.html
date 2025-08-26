@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Services</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    .main-header {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 246, 255, 0.3);
+    }
+
+    .nav-links a {
+      position: relative;
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #00f6ff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00f6ff;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .quote-btn {
+      background: linear-gradient(135deg, #00f6ff, #0ef);
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .quote-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0ef, #00f6ff);
+      box-shadow: 0 0 25px rgba(0, 246, 255, 0.7);
+    }
+
+    .services-section {
+      padding: 80px 20px;
+    }
+
+    .services-heading {
+      text-align: center;
+      font-size: 36px;
+      color: #00f6ff;
+      margin-bottom: 50px;
+    }
+
+    .service-card {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 246, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(0, 246, 255, 0.3);
+    }
+
+    .service-card h3 {
+      color: #0ef;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .service-card p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #94a3b8;
+      margin-top: 50px;
+      border-top: 1px solid #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <div>
+        <img src="https://res.cloudinary.com/dx457iqpi/image/upload/v1752553072/initial-letter-pr-logotype-company-name-blue-circle-swoosh-design-vector-logo-business-identity-203854503-removebg-preview_ygqobo.png" alt="logo" class="logo-img" />
+      </div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/service">Services</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <button class="quote-btn">Get a Quote</button>
+    </div>
+  </header>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="services-heading">What I Do</h2>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="service-card">
+            <h3>Frontend Development</h3>
+            <p>Responsive and interactive UI using React, HTML5, CSS3, JavaScript, and Tailwind CSS.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card">
+            <h3>Backend Development</h3>
+            <p>Building scalable APIs and server logic using Node.js, Express.js, and RESTful principles.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card">
+            <h3>Database Management</h3>
+            <p>Efficient data modeling and queries using MongoDB, Firebase, and MySQL as needed.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card">
+            <h3>Authentication & Security</h3>
+            <p>Secure login systems using Firebase Auth, JWT, and role-based access control (RBAC).</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card">
+            <h3>Deployment & CI/CD</h3>
+            <p>Deploying full stack apps on Vercel, Netlify, Render, and managing CI/CD pipelines on GitHub.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card">
+            <h3>Full Stack Consulting</h3>
+            <p>End-to-end consulting for project architecture, performance, and scalability decisions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+   <footer>
+    &copy; 2025 Poshika Rajpurohit. All rights reserved.
+  </footer>
+</body>
+</html>
+

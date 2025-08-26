@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Management</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0b0f19;
+            color: #fff;
+        }
+.main-header {
+    background: #0b0f19;
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+.main-header .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img {
+    height: 45px;
+}
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+
+.movie-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px 20px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+
+.movie-card {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    background: #131722;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 300px;
+}
+
+.movie-card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background-color: #f2f2f2;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.movie-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.movie-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.movie-info {
+    font-size: 13px;
+    color: #bbb;
+    margin-bottom: 4px;
+}
+
+.button-group {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.action-btn {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+}
+.edit-btn {
+    background-color: #28a745;
+}
+.edit-btn:hover {
+    background-color: #218838;
+}
+.delete-btn {
+    background-color: #ff3d3d;
+}
+
+.delete-btn:hover {
+    background-color: #cc2f2f;
+}
+
+@media (max-width: 768px) {
+    .movie-grid {
+        justify-content: center;
+    }
+    .movie-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-card {
+        width: 90%;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+  
+<header class="main-header">
+    <div class="container">
+        <a href="/" class="logo">
+            <img src="https://cdn.pixabay.com/photo/2022/07/17/19/22/movie-7328179_1280.png" alt="logo">
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/add">Add Movie</a>
+        </div>
+    </div>
+</header>
+<div class="movie-grid">
+    <% allMovies.forEach((movie) => { %>
+        <div class="movie-card">
+            <a href="/view-movie/<%= movie._id %>">
+                <% if (movie.image) { %>
+                    <img src="<%= movie.image %>" alt="<%= movie.title %>">
+                <% } else { %>
+                    <img src="https://via.placeholder.com/300x400" alt="No image">
+                <% } %>
+            </a>
+            <div class="movie-content">
+                <div class="movie-title"><%= movie.title %></div>
+                <div class="movie-info"><strong>Director:</strong> <%= movie.director %></div>
+                <div class="movie-info"><strong>Genre:</strong> <%= movie.genre %></div>
+                <div class="movie-info"><strong>Year:</strong> <%= movie.year %></div>
+                <div class="button-group">
+                    <a href="/edit-movie/<%= movie.id %>" class="action-btn edit-btn">Edit</a>
+                    <a href="/delete-movie/<%= movie.id %>" class="action-btn delete-btn">Delete</a>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>
+</body>
+</html> 
