@@ -2,24 +2,25 @@ const Blog = require("../models/blog.model");
 const path = require("path");
 const fs = require("fs");
 const User = require("../models/UserModel");
-exports.addBlogPage = async (req, res) => {
-  if  (!req.isAuthenticated()) return res.redirect("/");
 
+
+exports.addBlogPage = async (req, res) => {
   try {
-    const user = await User.findById(req.cookies.user._id);
-    if (!user) return res.redirect("/");
+    const user = req.user;
+    if (!user) return res.redirect("/user/login");
 
     return res.render("add_blog", { user });
   } catch (error) {
     console.error("Error fetching user:", error);
+    return res.redirect("/");
   }
 };
-exports.viewAllBlogsPage = async (req, res) => {
-    if (!req.isAuthenticated()) return res.redirect("/");
 
+
+exports.viewAllBlogsPage = async (req, res) => {
   try {
-    const user = await User.findById(req.cookies.user._id);
-    if (!user) return res.redirect("/");
+    const user = req.user;
+    if (!user) return res.redirect("/user/login");
 
     let filter = {};
 
@@ -46,25 +47,27 @@ exports.viewAllBlogsPage = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching blogs:", error);
+    return res.redirect("/");
   }
 };
-exports.MyBlogsPage = async (req, res) => {
-    if (!req.isAuthenticated()) return res.redirect("/");
 
+exports.MyBlogsPage = async (req, res) => {
   try {
-    const user = await User.findById(req.cookies.user._id);
+    const user = req.user;
     if (!user) return res.redirect("/user/login");
 
     const blogs = await Blog.find({ userId: user._id }).sort({ createdAt: -1 });
-
     return res.render("my_blogs", { blogs, user });
   } catch (error) {
     console.error("Error fetching my blogs:", error);
+    return res.redirect("/");
   }
 };
+
 exports.addNewBlog = async (req, res) => {
   try {
-      if (!req.isAuthenticated()) return res.redirect("/");
+    const user = req.user;
+    if (!user) return res.redirect("/user/login");
 
     let imagePath = "";
     if (req.file) {
@@ -72,43 +75,46 @@ exports.addNewBlog = async (req, res) => {
       req.body.image = imagePath;
     }
 
-    const author = `${req.cookies.user.firstname} ${req.cookies.user.lastname}`;
+    const author = `${user.firstname} ${user.lastname}`;
 
     await Blog.create({
       ...req.body,
       author,
-      userId: req.cookies.user._id, 
+      userId: user._id,
     });
 
     return res.redirect("/blog/my-blogs");
   } catch (error) {
     console.error("Error adding blog:", error);
+    return res.redirect("/");
   }
 };
+
+
 exports.viewSingleBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
     if (!blog) return res.redirect("/blog/view-all-blogs");
 
-    let user = null;
-    if (req.cookies?.user?._id) {
-      user = await User.findById(req.cookies.user._id);
-    }
+    let user = req.user || null;
 
     return res.render("single-blog", { blog, user });
   } catch (error) {
     console.error("Error fetching single blog:", error);
+    return res.redirect("/blog/view-all-blogs");
   }
 };
+
+
 exports.editBlogPage = async (req, res) => {
   try {
-     if (!req.isAuthenticated()) return res.redirect("/");
+    const user = req.user;
+    if (!user) return res.redirect("/user/login");
 
-    const loginUser = await User.findById(req.cookies.user._id);
     const blog = await Blog.findById(req.params.id);
 
-    if (blog && blog.userId.toString() === loginUser._id.toString()) {
-      return res.render("edit_blog", { blog, user: loginUser });
+    if (blog && blog.userId.toString() === user._id.toString()) {
+      return res.render("edit_blog", { blog, user });
     } else {
       return res.redirect("back");
     }
@@ -117,22 +123,31 @@ exports.editBlogPage = async (req, res) => {
     return res.redirect("/blog/my-blogs");
   }
 };
+
 exports.deleteBlog = async (req, res) => {
   try {
+    const user = req.user;
     const blog = await Blog.findById(req.params.id);
-    if (blog && blog.userId.toString() === req.cookies.user._id.toString()) {
+
+    if (blog && blog.userId.toString() === user._id.toString()) {
       await Blog.findByIdAndDelete(req.params.id);
       return res.redirect("back");
+    } else {
+      return res.redirect("/login");
     }
   } catch (error) {
     console.error("Error deleting blog:", error);
+    return res.redirect("/blog/my-blogs");
   }
 };
+
+
 exports.updateBlog = async (req, res) => {
   try {
+    const user = req.user;
     const blog = await Blog.findById(req.params.id);
 
-    if (blog && blog.userId.toString() === req.cookies.user._id.toString()) {
+    if (blog && blog.userId.toString() === user._id.toString()) {
       if (req.file) {
         let imagePath = "";
         if (blog.image) {
@@ -149,10 +164,11 @@ exports.updateBlog = async (req, res) => {
       await Blog.findByIdAndUpdate(blog._id, req.body, { new: true });
       return res.redirect("/blog/my-blogs");
     } else {
-      return res.status(403).send("Unauthorized");
+      console.error("Error updating blog:", error);
+    return res.redirect("/blog/my-blogs");
     }
   } catch (error) {
     console.error("Error updating blog:", error);
-    return res.status(500).send("Internal Server Error");
+    return res.redirect("/blog/my-blogs");
   }
 };
