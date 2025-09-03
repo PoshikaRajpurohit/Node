@@ -21,7 +21,6 @@ exports.logout = (req, res) => {
   }
 };
 
-
 exports.loginPage = (req, res) => {
   try {
     if (!req.isAuthenticated()) {
